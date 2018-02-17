@@ -12,7 +12,7 @@ class Puzzle():
     def __init__(self, reporter=None, local_address=None):
         self.reporter = reporter
         self.local_address = local_address
-        self.state = LockState.CLOSED
+        self.state = PuzzleState.UNKNOWN
 
 
 class LockState(Enum):

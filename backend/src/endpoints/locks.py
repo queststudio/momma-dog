@@ -6,5 +6,5 @@ from src.game.game import Game
 
 class Locks(Resource):
     def get(self):
-        return {}
+        return Game().get_locks()
 

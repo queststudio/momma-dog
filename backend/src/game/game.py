@@ -1,9 +1,11 @@
 from src.game.models import State, Lock, Puzzle
+from src.game.actions import Action
+from src.game.queries import Query
 
 init_state = State(locks=[
     Lock('first', 1, [
-        Puzzle(reporter=1, local_address=1),
-        Puzzle(reporter=1, local_address=2)
+        Puzzle(1, 1),
+        Puzzle(1, 2)
     ]),
     Lock('two', 2, [
         Puzzle(2, 5)
@@ -30,3 +32,9 @@ class Game():
 
     def get_puzzles(self):
         return [puzzle for lock in self.state.locks for puzzle in lock.puzzles]
+
+    def act(self, action: Action):
+        self.state = action.act(self.state)
+        
+    def perform_query(self, query: Query):
+        return query.perform(self.state)
