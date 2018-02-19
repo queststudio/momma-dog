@@ -18,8 +18,8 @@ class Puzzles(Resource):
 
 
 class ReporterPuzzles(Resource):
-    def get(self, reporter_id: int, puzzle_id: int):
-        puzzle = Puzzle(reporter_id, puzzle_id)
+    def get(self, reporter: int, local_address: int):
+        puzzle = Puzzle(reporter, local_address)
         query = PuzzleQuery(puzzle)
         puzzle = game.perform_query(query)
 
@@ -28,8 +28,8 @@ class ReporterPuzzles(Resource):
         else:
             return None, 404
 
-    def put(self, reporter_id: int, puzzle_id: int):
-        puzzle = Puzzle(reporter_id, puzzle_id)
+    def put(self, reporter: int, local_address: int):
+        puzzle = Puzzle(reporter, local_address)
         new_state = request.json.get('state')
 
         if not new_state:
