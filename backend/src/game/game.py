@@ -15,9 +15,14 @@ class Game():
 
     def act(self, action: Action):
         self.state = action.act(self.state)
+        if self.__subscriber:
+            self.__subscriber(self.state)
         
     def perform_query(self, query: Query):
         return query.perform(self.state)
+    
+    def subscribe(self, subscriber):
+        self.__subscriber = subscriber
 
 
 
