@@ -21,16 +21,15 @@ init_state = State(locks=[
     ])
 ])
 
-
 class Game():
 
     def __init__(self, state=init_state):
         self.state = state
 
-    def get_locks(self):
+    def get_locks(self): #ToDo move to queries
         return self.state.locks
 
-    def get_puzzles(self):
+    def get_puzzles(self): #ToDo move to queries
         return [puzzle for lock in self.state.locks for puzzle in lock.puzzles]
 
     def act(self, action: Action):
@@ -38,3 +37,6 @@ class Game():
         
     def perform_query(self, query: Query):
         return query.perform(self.state)
+
+
+game = Game()

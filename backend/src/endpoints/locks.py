@@ -1,10 +1,9 @@
 from flask import jsonify
 from flask_restful import Resource
 
-from src.game.game import Game
+from src.game.game import game
 
 
 class Locks(Resource):
     def get(self):
-        return Game().get_locks()
-
+        return game.get_locks(), 200
