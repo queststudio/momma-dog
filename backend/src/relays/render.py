@@ -9,7 +9,7 @@ def render_lock(lock: Lock):
         from pcf8574 import PCF8574
         pcf = PCF8574(i2c_port_num, lock.address)
         pcf.port[lock.port] = False if lock.state == LockState.OPEN else True
-    except ModuleNotFoundError:
+    except ImportError:
         print('Couldn\'t find module pcf8574')
 
 
