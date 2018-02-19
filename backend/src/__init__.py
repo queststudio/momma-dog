@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from flask_restful import Api
 
-from src.endpoints.register_apis import register_apis
+from src.register_apis import register_apis
 
 app = Flask(__name__)
 api = Api(app)
