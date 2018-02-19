@@ -4,7 +4,7 @@ i2c_port_num = 1
 
 
 def render_lock(lock: Lock):
-    print(f'Rendering {lock.serialize()}')
+    print('Rendering ' + lock.serialize())
     try:
         from pcf8574 import PCF8574
         pcf = PCF8574(i2c_port_num, lock.address)
