@@ -5,22 +5,22 @@ from src.game.actions import Action, UpdatePuzzleAction
 from src.game.models import State, Puzzle, Lock, PuzzleState
 
 test_state = State(locks=[
-    Lock('first', 1, [
+    Lock('first', 0x3F, 1, [
         Puzzle(1, 1),
         Puzzle(1, 2)
     ]),
-    Lock('two', 2, [
+    Lock('two', 0x3F, 2, [
         Puzzle(2, 5)
     ]),
-    Lock('three', 3, [
+    Lock('three', 0x3F, 3, [
         Puzzle(3, 6)
     ]),
-    Lock('four', 4, [
+    Lock('four', 0x3F, 4, [
         Puzzle(4, 7)
     ]),
-    Lock('five', 5, [
+    Lock('five', 0x3F, 5, [
     ]),
-    Lock('six', 6, [
+    Lock('six', 0x3F, 6, [
         Puzzle(6, 1),
         Puzzle(6, 2),
         Puzzle(6, 3)

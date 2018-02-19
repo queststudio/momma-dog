@@ -19,3 +19,17 @@ class PuzzleExistsQuery(Query):
                     return True
 
         return False
+
+
+class PuzzleQuery(Query):
+    def __init__(self, puzzle: Puzzle):
+        self.puzzle = puzzle
+
+    def perform(self, state: State):
+        for lock in state.locks:
+            for puzzle in lock.puzzles:
+                if(puzzle.reporter==self.puzzle.reporter
+                    and puzzle.local_address == self.puzzle.local_address):
+                    return puzzle
+
+        return None
