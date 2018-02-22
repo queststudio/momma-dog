@@ -33,3 +33,16 @@ class PuzzleQuery(Query):
                     return puzzle
 
         return None
+
+
+class ReporterExistsQuery(Query):
+    def __init__(self, reporter: str):
+        self.reporter = reporter
+
+    def perform(self, state: State):
+        for lock in state.locks:
+            for puzzle in lock.puzzles:
+                if(puzzle.reporter==self.reporter):
+                    return True
+
+        return False

@@ -28,28 +28,28 @@ class Game():
 
 init_state = State(locks=[
     Lock('ira', 56, 0, [
-        Puzzle(1, 8)
+        Puzzle('62:01:94:70:60:70', 8)
     ]),
     Lock('темная комната', 56, 1, [
-        Puzzle(1, 9)
+        Puzzle('62:01:94:70:60:70', 9)
     ]),
     Lock('темная комната - свет', 56, 2, [
-        Puzzle(1, 10)
+        Puzzle('62:01:94:70:60:70', 10)
     ]),
     Lock('acedia', 56, 3, [
-        Puzzle(2, 11)
+        Puzzle('62:01:94:70:60:70', 11)
     ]),
     Lock('superbia - свет', 56, 4, [
-        Puzzle(2, 12)
+        Puzzle('62:01:94:70:60:70', 12)
     ]),
     Lock('superbia - код', 56, 5, [
-        Puzzle(2, 13)
+        Puzzle('62:01:94:70:60:70', 13)
     ]),
     Lock('avarice', 56, 6, [
-        Puzzle(3, 14)
+        Puzzle('62:01:94:70:60:70', 14)
     ]),
     Lock('сундук - 1', 56, 7, [
-        Puzzle(3, 15)
+        Puzzle('62:01:94:70:60:70', 15)
     ])
 ])
 #ToDo

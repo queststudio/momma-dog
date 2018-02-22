@@ -28,12 +28,12 @@ class ReporterPuzzles(Resource):
         else:
             return None, 404
 
-    def put(self, reporter: int, local_address: int):
+    def put(self, reporter: str, local_address: int):
         puzzle = Puzzle(reporter, local_address)
         new_state = request.json.get('state')
 
         if not new_state:
-            return 401
+            return 400
 
         puzzle.state = PuzzleState(new_state)
 
