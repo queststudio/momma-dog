@@ -3,5 +3,6 @@ flask_restful==0.3.6
 pcf8574==0.0.5
 
 gunicorn==19.7.1
+gevent==1.3a1
 
 pytest==3.4.0
