@@ -1,67 +1,10 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {locks, puzzles} from './api';
-
-class Puzzle extends Component {
-  render() {
-    const {label, state} = this.props;
-    return (
-      <div>
-        <p>{label}</p>
-        <p>
-          {state}
-        </p>
-      </div>
-    );
-  }
-}
-
-class Lock extends Component {
-  render() {
-    const {label, state, puzzles, onPuzzleStateChanged} = this.props;
-    return (
-      <div>
-        <p>{label}</p>
-        <p>{state}</p>
-        <div>
-          {puzzles.map(puzzle => <Puzzle {...puzzle} onStateChanged={onPuzzleStateChanged}/>)}
-        </div>
-      </div>
-    );
-  }
-}
-
-class Locks extends Component {
-  render() {
-    const {locks} = this.props;
-    return (
-      <div>
-        {locks.map(lock => <Lock {...lock}/>)}
-      </div>
-    )
-  }
-}
-
-class Loading extends Component {
-  render() {
-    return (
-      <p>
-        Подгружаю данные...
-      </p>
-    );
-  }
-}
-
-class LoadingError extends Component {
-  render() {
-    return (
-      <p>
-        Невозможно подгрузить данные.
-      </p>
-    );
-  }
-}
+import {locks} from './api';
+import LoadingError from './LoadingError';
+import Loading from './Loading';
+import Locks from './Locks';
 
 class App extends Component {
   constructor(props) {
