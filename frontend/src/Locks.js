@@ -1,14 +1,27 @@
 import React, {Component} from "react";
 
+class State extends Component {
+  render(){
+    const {state} = this.props;
+    const stateMap = {
+      unknown:'не найден',
+      solved: 'решен',
+      unsolved: 'не решен'
+    };
+    return <p>{stateMap[state]}</p>
+  }
+}
+
 class Puzzle extends Component {
   render() {
-    const {label, state} = this.props;
+    const {reporter, local_address, state} = this.props;
+    const solvedClass = state === 'solved' ? 'solved': 'not-solved';
+    const className = ['puzzle', solvedClass].join(' ');
     return (
-      <div>
-        <p>{label}</p>
-        <p>
-          {state}
-        </p>
+      <div className={className}>
+        <p>{reporter}</p>
+        <p>{local_address}</p>
+        <State state={state}/>
       </div>
     );
   }
@@ -18,7 +31,7 @@ class Lock extends Component {
   render() {
     const {label, state, puzzles, onPuzzleStateChanged} = this.props;
     return (
-      <div>
+      <div className='lock'>
         <p>{label}</p>
         <p>{state}</p>
         <div>
