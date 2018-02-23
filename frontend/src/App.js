@@ -83,10 +83,10 @@ class App extends Component {
 
   componentDidMount() {
     const self = this;
-    this.fetchLocks().then((result) => {
+    this.fetchLocks().then((locks) => {
       self.setState({
         ...self.state,
-        locks: result.locks,
+        locks,
         loading: false,
         error: false
       })
@@ -114,7 +114,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo"/>
           <h1 className="App-title">Контрольная панель</h1>
         </header>
-        {mainConent}
+        <div className="App-content">
+          {mainConent}
+        </div>
       </div>
     );
   }
