@@ -9,7 +9,7 @@ RUN apt-get install -y build-essential tk-dev libncurses5-dev libncursesw5-dev l
 COPY ./backend ./backend
 RUN pip3 install -r ./backend/requirements.txt
 
-COPY ./deployment/nginx.conf /etc/nginx/nginx.conf
+#COPY ./deployment/nginx.conf /etc/nginx/nginx.conf
 
 
 CMD nginx -v
