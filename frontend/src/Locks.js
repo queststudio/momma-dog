@@ -14,11 +14,11 @@ class State extends Component {
 
 class Puzzle extends Component {
   render() {
-    const {reporter, local_address, state} = this.props;
+    const {reporter, local_address, state, onStateChanged} = this.props;
     const solvedClass = state === 'solved' ? 'solved': 'not-solved';
     const className = ['puzzle', solvedClass].join(' ');
     return (
-      <div className={className}>
+      <div className={className} onClick={()=>onStateChanged(reporter, local_address, 'solved')}>
         <p>{reporter}</p>
         <p>{local_address}</p>
         <State state={state}/>
@@ -44,10 +44,10 @@ class Lock extends Component {
 
 class Locks extends Component {
   render() {
-    const {locks} = this.props;
+    const {locks, onPuzzleStateChanged} = this.props;
     return (
       <div>
-        {locks.map(lock => <Lock {...lock}/>)}
+        {locks.map(lock => <Lock {...lock} onPuzzleStateChanged={onPuzzleStateChanged}/>)}
       </div>
     )
   }

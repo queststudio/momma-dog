@@ -5,10 +5,11 @@ const baseUrl = 'http://localhost:8000/api';//todo make configurable 92.168.1.10
 const locks = {
   fetch: () => axios.get(`${baseUrl}/locks`).then(result => result.data.locks)
 };
+
 const puzzles = {
-  set: (reporter, address, status) => {
+  set: (reporter, address, state) => {
     const body = {
-      status
+      state
     };
     const url = `${baseUrl}/reporters/${reporter}/puzzles/${address}`;
     return axios.put(url, body);
@@ -19,4 +20,4 @@ const puzzles = {
 export {
   locks,
   puzzles
-}
+};

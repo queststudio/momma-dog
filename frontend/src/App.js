@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {locks} from './api';
+import {locks, puzzles} from './api';
 import LoadingError from './LoadingError';
 import Loading from './Loading';
 import Locks from './Locks';
@@ -14,19 +14,12 @@ class App extends Component {
       locks: [],
       error: false
     };
+    this.changePuzzleState = this.changePuzzleState.bind(this);
   }
 
-  puzzleStateChanged(reporter, address) {
-    console.log(`[${reporter}:${address}] clicked`);
-  }
-
-  fetchLocks() {
-    return locks.fetch();
-  }
-
-  componentDidMount() {
+  loadData() {
     const self = this;
-    this.fetchLocks().then((locks) => {
+    locks.fetch().then((locks) => {
       self.setState({
         ...self.state,
         locks,
@@ -43,13 +36,23 @@ class App extends Component {
     });
   }
 
+  componentDidMount() {
+    this.loadData();
+  }
+
+  changePuzzleState(reporter, address, state) {
+    const self = this;
+    puzzles.set(reporter, address, state)
+      .then(() => self.loadData());
+  }
+
   render() {
     const {loading, locks, error} = this.state;
     const mainConent = loading
       ? <Loading/>
       : error
         ? <LoadingError/>
-        : <Locks locks={locks} onPuzzleStateChanged={this.puzzleStateChanged}/>;
+        : <Locks locks={locks} onPuzzleStateChanged={this.changePuzzleState}/>;
 
     return (
       <div className="App">
