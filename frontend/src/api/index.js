@@ -6,6 +6,10 @@ const locks = {
   fetch: () => axios.get(`${baseUrl}/locks`).then(result => result.data.locks)
 };
 
+const switches = {
+  fetch: () => axios.get(`${baseUrl}/switches`).then(result => result.data.locks)
+};
+
 const puzzles = {
   set: (reporter, address, state) => {
     const body = {
@@ -18,6 +22,7 @@ const puzzles = {
 
 
 export {
+  switches,
   locks,
   puzzles
 };

@@ -1,4 +1,7 @@
 import React, {Component} from "react";
+import LoadingError from '../../LoadingError';
+import Loading from '../../Loading';
+import {locks, puzzles} from '../../api/index';
 
 class State extends Component {
   render(){
@@ -43,11 +46,57 @@ class Lock extends Component {
 }
 
 class Locks extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      locks: [],
+      error: false
+    };
+    this.changePuzzleState = this.changePuzzleState.bind(this);
+  }
+
+  loadData() {
+    const self = this;
+    locks.fetch().then((locks) => {
+      self.setState({
+        ...self.state,
+        locks,
+        loading: false,
+        error: false
+      })
+    }).catch((err) => {
+      console.log(err);
+      self.setState({
+        ...self.state,
+        loading: false,
+        error: true
+      })
+    });
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  changePuzzleState(reporter, address, state) {
+    const self = this;
+    puzzles.set(reporter, address, state)
+      .then(() => self.loadData());
+  }
+
   render() {
-    const {locks, onPuzzleStateChanged} = this.props;
+    const {loading, locks, error} = this.state;
+    const main = loading
+      ? <Loading/>
+      : error
+        ? <LoadingError/>
+        : locks.map(lock => <Lock {...lock} onPuzzleStateChanged={this.changePuzzleState}/>);
+
     return (
       <div>
-        {locks.map(lock => <Lock {...lock} onPuzzleStateChanged={onPuzzleStateChanged}/>)}
+        <p>Замки</p>
+        {main}
       </div>
     )
   }
