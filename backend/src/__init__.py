@@ -15,6 +15,8 @@ def index():
     return "Remote control is under construction."
 
 game.subscribe(render_state)
+game.trigger()
+
 register_apis(api.add_resource)
 
 if __name__ == '__main__':

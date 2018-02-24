@@ -2,28 +2,37 @@ from src.game.models import State, Lock, Puzzle
 from src.game.actions import Action
 from src.game.queries import Query
 
+
 class Game():
 
     def __init__(self, state=None):
         self.state = state
 
-    def get_locks(self): #ToDo move to queries
+    def get_locks(self):  # ToDo move to queries
         return self.state.locks
 
-    def get_puzzles(self): #ToDo move to queries
+    def get_puzzles(self):  # ToDo move to queries
         return [puzzle for lock in self.state.locks for puzzle in lock.puzzles]
 
     def act(self, action: Action):
-        self.state = action.act(self.state)
+        new_state = action.act(self.state)
+
+        if new_state == self.state:
+            return
+
+        self.state = new_state
+
+        self.trigger()
+
+    def trigger(self):
         if self.__subscriber:
             self.__subscriber(self.state)
-        
+
     def perform_query(self, query: Query):
         return query.perform(self.state)
-    
+
     def subscribe(self, subscriber):
         self.__subscriber = subscriber
-
 
 
 init_state = State(locks=[
@@ -52,7 +61,7 @@ init_state = State(locks=[
         Puzzle('62:01:94:70:60:70', 15)
     ])
 ])
-#ToDo
+# ToDo
 # Puzzle chest_2_puzzles [1] = {
 #   Puzzle(16)
 # };

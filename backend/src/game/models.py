@@ -21,6 +21,11 @@ class Puzzle():
             'state': self.state.value,
         }
 
+    def __eq__(self, other):
+        return self.reporter == other.reporter \
+               and self.local_address == other.local_address \
+               and self.state == other.state
+
 
 class LockState(Enum):
     OPEN = 'open'
@@ -48,7 +53,18 @@ class Lock():
             'state': self.state.value,
         }
 
+    def __eq__(self, other):
+        return self.label == other.label \
+               and self.address == other.address \
+               and self.port == other.port \
+               and all([puzzle in other.puzzles for puzzle in self.puzzles]) \
+               and len(self.puzzles) == len(other.puzzles)
+
 
 class State():
     def __init__(self, locks=[]):
         self.locks = locks
+
+    def __eq__(self, other):
+        return all([lock in other.locks for lock in self.locks]) \
+               and len(self.locks) == len(other.locks)
