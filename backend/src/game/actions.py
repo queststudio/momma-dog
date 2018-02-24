@@ -1,5 +1,5 @@
 from copy import deepcopy
-from src.game.models import State, Puzzle
+from src.game.models import State, Puzzle, Switch, SwitchState
 
 
 class Action:
@@ -18,5 +18,19 @@ class UpdatePuzzleAction(Action):
                 if (puzzle.reporter == self.puzzle.reporter
                     and puzzle.local_address == self.puzzle.local_address):
                     puzzle.state = self.puzzle.state
+
+        return new_state
+
+
+class UpdateSwitchAction(Action):
+    def __init__(self, id: int, state:SwitchState):
+        self.id = id
+        self.state = state
+
+    def act(self, state: State):
+        new_state = deepcopy(state)
+        for switch in new_state.switches:
+            if (switch.id == self.id):
+                switch.state = self.state
 
         return new_state

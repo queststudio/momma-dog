@@ -18,7 +18,6 @@ class Reporters(Resource):
             return None, 404
 
         for device in devices:
-            print(device)
             puzzle = Puzzle(reporter, device['address'])
             puzzle.state = PuzzleState(device['state'])
             command = UpdatePuzzleAction(puzzle)

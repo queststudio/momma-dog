@@ -1,4 +1,4 @@
-from src.game.models import State, Lock, Puzzle
+from src.game.models import State, Lock, Puzzle, Switch
 from src.game.actions import Action
 from src.game.queries import Query
 
@@ -53,13 +53,10 @@ init_state = State(locks=[
     ]),
     Lock('superbia - код', 56, 5, [
         Puzzle('62:01:94:70:60:70', 13)
-    ]),
-    Lock('avarice', 56, 6, [
-        Puzzle('62:01:94:70:60:70', 14)
-    ]),
-    Lock('сундук - 1', 56, 7, [
-        Puzzle('62:01:94:70:60:70', 15)
     ])
+], switches=[
+    Switch(1, 'свет', 56, 6),
+    Switch(2, 'замок', 56, 7),
 ])
 # ToDo
 # Puzzle chest_2_puzzles [1] = {

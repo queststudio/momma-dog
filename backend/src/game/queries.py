@@ -14,7 +14,7 @@ class PuzzleExistsQuery(Query):
     def perform(self, state: State):
         for lock in state.locks:
             for puzzle in lock.puzzles:
-                if(puzzle.reporter==self.puzzle.reporter
+                if (puzzle.reporter == self.puzzle.reporter
                     and puzzle.local_address == self.puzzle.local_address):
                     return True
 
@@ -28,7 +28,7 @@ class PuzzleQuery(Query):
     def perform(self, state: State):
         for lock in state.locks:
             for puzzle in lock.puzzles:
-                if(puzzle.reporter==self.puzzle.reporter
+                if (puzzle.reporter == self.puzzle.reporter
                     and puzzle.local_address == self.puzzle.local_address):
                     return puzzle
 
@@ -42,7 +42,24 @@ class ReporterExistsQuery(Query):
     def perform(self, state: State):
         for lock in state.locks:
             for puzzle in lock.puzzles:
-                if(puzzle.reporter==self.reporter):
+                if (puzzle.reporter == self.reporter):
                     return True
+
+        return False
+
+
+class SwitchesQuery(Query):
+    def perform(self, state: State):
+        return state.switches
+
+
+class SwitchExistsQuery(Query):
+    def __init__(self, id):
+        self.id = id
+
+    def perform(self, state: State):
+        for switch in state.switches:
+            if (str(switch.id) == str(self.id)):
+                return True
 
         return False

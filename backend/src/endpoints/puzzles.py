@@ -1,6 +1,4 @@
-from flask import jsonify
 from flask_restful import Resource, request
-import json
 
 from src.game.game import game
 from src.game.models import Puzzle, PuzzleState
