@@ -42,6 +42,21 @@
     background-color: #eca1a6;
 }
 
+.switch {
+    float: left;
+    margin: 10px;
+    padding:5px;
+    border-radius: 5px;
+}
+
+.switch-on {
+    background-color: #bdcebe;
+}
+
+.switch-off {
+    background-color: #eca1a6;
+}
+
 .puzzle {
     margin:10px;
     padding:5px;

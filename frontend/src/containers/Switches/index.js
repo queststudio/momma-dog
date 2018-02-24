@@ -19,8 +19,10 @@ class Switch extends Component {
     const {id, label, state, changeState} = this.props;
     const toggled = state === 'on' ? 'off' : 'on';
     const onStateChanged = () => changeState(id, toggled);
+    const stateClass = state === 'on' ? 'switch-on': 'switch-off';
+    const className = ['switch', stateClass].join(' ');
     return (
-      <div className='switch' onClick={onStateChanged}>
+      <div className={className} onClick={onStateChanged}>
         <p>{label}</p>
         <State state={state}/>
       </div>
