@@ -6,7 +6,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./frontend/build:/build
+      - ./frontend/build:/build1
       - ./deploy/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - web
