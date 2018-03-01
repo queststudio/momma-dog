@@ -71,7 +71,7 @@ class Switches extends Component {
   }
 
   render() {
-    const {loading, switches, error, className} = this.state;
+    const {loading, switches, error} = this.state;
     const main = loading
       ? <Loading/>
       : error
@@ -79,7 +79,7 @@ class Switches extends Component {
         : switches.map(lock => <Switch {...lock} changeState={this.changeSwitchState}/>);
 
     return (
-      <div className={className}>
+      <div className="switches">
         <p>Выключатели</p>
         {main}
       </div>

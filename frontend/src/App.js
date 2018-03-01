@@ -13,9 +13,9 @@ class App extends Component {
           <h1 className="App-title">Контрольная панель</h1>
         </header>
         <div className="App-content">
-          <Locks className="locks"/>
+          <Locks/>
           <br/>
-          <Switches className="switches"/>
+          <Switches/>
         </div>
       </div>
     );
