@@ -86,7 +86,7 @@ class Locks extends Component {
   }
 
   render() {
-    const {loading, locks, error} = this.state;
+    const {loading, locks, error, className} = this.state;
     const main = loading
       ? <Loading/>
       : error
@@ -94,7 +94,7 @@ class Locks extends Component {
         : locks.map(lock => <Lock {...lock} onPuzzleStateChanged={this.changePuzzleState}/>);
 
     return (
-      <div>
+      <div className={className}>
         <p>Замки</p>
         {main}
       </div>

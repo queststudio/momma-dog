@@ -22,11 +22,17 @@
     font-size: large;
 }
 
-.App-conent {
+.App-content {
+    width: 1000px;
+    margin: auto;
+}
 
+.locks {
+    float: left;
 }
 
 .lock {
+    width: 170px;
     float: left;
     margin: 10px;
     padding:5px;
@@ -42,7 +48,12 @@
     background-color: #eca1a6;
 }
 
+.switches {
+    float: left;
+}
+
 .switch {
+    width: 170px;
     float: left;
     margin: 10px;
     padding:5px;

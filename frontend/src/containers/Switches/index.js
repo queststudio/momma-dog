@@ -19,7 +19,7 @@ class Switch extends Component {
     const {id, label, state, changeState} = this.props;
     const toggled = state === 'on' ? 'off' : 'on';
     const onStateChanged = () => changeState(id, toggled);
-    const stateClass = state === 'on' ? 'switch-on': 'switch-off';
+    const stateClass = state === 'on' ? 'switch-on' : 'switch-off';
     const className = ['switch', stateClass].join(' ');
     return (
       <div className={className} onClick={onStateChanged}>
@@ -71,7 +71,7 @@ class Switches extends Component {
   }
 
   render() {
-    const {loading, switches, error} = this.state;
+    const {loading, switches, error, className} = this.state;
     const main = loading
       ? <Loading/>
       : error
@@ -79,7 +79,7 @@ class Switches extends Component {
         : switches.map(lock => <Switch {...lock} changeState={this.changeSwitchState}/>);
 
     return (
-      <div>
+      <div className={className}>
         <p>Выключатели</p>
         {main}
       </div>
