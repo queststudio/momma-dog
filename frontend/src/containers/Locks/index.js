@@ -54,6 +54,7 @@ class Locks extends Component {
       error: false
     };
     this.changePuzzleState = this.changePuzzleState.bind(this);
+    this.loadData = this.loadData.bind(this);
   }
 
   loadData() {
@@ -76,7 +77,7 @@ class Locks extends Component {
   }
 
   componentDidMount() {
-    this.loadData();
+    setInterval(this.loadData, 2000);
   }
 
   changePuzzleState(reporter, address, state) {

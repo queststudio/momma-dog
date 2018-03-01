@@ -39,6 +39,7 @@ class Switches extends Component {
       error: false
     };
     this.changeSwitchState = this.changeSwitchState.bind(this);
+    this.loadData = this.loadData.bind(this);
   }
 
   loadData() {
@@ -61,7 +62,7 @@ class Switches extends Component {
   }
 
   componentDidMount() {
-    this.loadData();
+    setInterval(this.loadData, 2000);
   }
 
   changeSwitchState(id, state) {
