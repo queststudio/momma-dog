@@ -23,5 +23,5 @@ singleton = PCF()
 
 
 def set_state(address, port, state):
-    print('Rendering: ' + str(address) + ' ' + str(port) + ' ' + state)
+    print('Rendering: ' + str(address) + ' ' + str(port) + ' ' + str(state))
     singleton.set_state(address, port, state)
