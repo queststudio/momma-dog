@@ -1,6 +1,7 @@
 import axios from 'axios';
+import config from '../config';
 
-const baseUrl = 'http://localhost:8000/api';//todo make configurable 92.168.1.106
+const baseUrl = config.apiUrl;
 
 const locks = {
   fetch: () => axios.get(`${baseUrl}/locks`).then(result => result.data.locks)
