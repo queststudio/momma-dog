@@ -23,7 +23,7 @@ class UpdatePuzzleAction(Action):
 
 
 class UpdateSwitchAction(Action):
-    def __init__(self, id: int, state:SwitchState):
+    def __init__(self, id: int, state: SwitchState):
         self.id = id
         self.state = state
 
@@ -33,4 +33,14 @@ class UpdateSwitchAction(Action):
             if (switch.id == self.id):
                 switch.state = self.state
 
+        return new_state
+
+
+class RestartAction(Action):
+    def __init__(self, state: State):
+        self.state = state
+
+    def act(self, state: State):
+        new_state = deepcopy(self.state)
+        new_state.game = state.game + 1
         return new_state

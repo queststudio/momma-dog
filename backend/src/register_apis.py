@@ -3,6 +3,7 @@ from src.endpoints.locks import Locks
 from src.endpoints.puzzles import Puzzles, ReporterPuzzles
 from src.endpoints.reporters import Reporters
 from src.endpoints.switches import Switches, Switch
+from src.endpoints.games import CurrentGame
 
 api_base = '/api'
 
@@ -14,3 +15,4 @@ def register_apis(register_resource):
     register_resource(Reporters, api_base + '/reporters/<reporter>')
     register_resource(Switch, api_base + '/switches/<int:id>')
     register_resource(Switches, api_base + '/switches')
+    register_resource(CurrentGame, api_base + '/games/current')
