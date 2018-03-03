@@ -107,41 +107,41 @@ init_state = State(locks=[
     Switch(15, ' дверь 3 -Кладбище', 5, 6),  # добавить i2c
     Switch(16, ' дверь 4 -Тёмная', 5, 6),  # добавить i2c
     Switch(18, ' TEST610', 61, 0),  # добавить i2c
-    Switch(17, ' TEST612', 61, 1),  # добавить i2c
-    Switch(17, ' TEST612', 61, 2),  # добавить i2c
-    Switch(17, ' TEST613', 61, 3),  # добавить i2c
-    Switch(17, ' TEST614', 61, 4),  # добавить i2c
-    Switch(17, ' TEST615', 61, 5),  # добавить i2c
-    Switch(17, ' TEST616', 61, 6),  # добавить i2c
-    Switch(17, ' TEST617', 61, 7),  # добавить i2c
-    Switch(17, ' TEST618', 61, 8),  # добавить i2c
-    Switch(17, ' TEST580', 58, 0),  # добавить i2c
-    Switch(17, ' TEST581', 58, 1),  # добавить i2c
-    Switch(17, ' TEST582', 58, 2),  # добавить i2c
-    Switch(17, ' TEST583', 58, 3),  # добавить i2c
-    Switch(17, ' TEST584', 58, 4),  # добавить i2c
-    Switch(17, ' TEST585', 58, 5),  # добавить i2c
-    Switch(17, ' TEST586', 58, 6),  # добавить i2c
-    Switch(17, ' TEST587', 58, 7),  # добавить i2c
-    Switch(17, ' TEST588', 58, 8),  # добавить i2c
-    Switch(17, ' TEST570', 57, 0),  # добавить i2c
-    Switch(17, ' TEST571', 57, 1),  # добавить i2c
-    Switch(17, ' TEST572', 57, 2),  # добавить i2c
-    Switch(17, ' TEST573', 57, 3),  # добавить i2c
-    Switch(17, ' TEST574', 57, 4),  # добавить i2c
-    Switch(17, ' TEST575', 57, 5),  # добавить i2c
-    Switch(17, ' TEST576', 57, 6),  # добавить i2c
-    Switch(17, ' TEST577', 57, 7),  # добавить i2c
-    Switch(17, ' TEST578', 57, 8),  # добавить i2c
-    Switch(17, ' TEST560', 56, 0),  # добавить i2c
-    Switch(17, ' TEST561', 56, 1),  # добавить i2c
-    Switch(17, ' TEST562', 56, 2),  # добавить i2c
-    Switch(17, ' TEST563', 56, 3),  # добавить i2c
-    Switch(17, ' TEST564', 56, 4),  # добавить i2c
-    Switch(17, ' TEST565', 56, 5),  # добавить i2c
-    Switch(17, ' TEST566', 56, 6),  # добавить i2c
-    Switch(17, ' TEST567', 56, 7),  # добавить i2c
-    Switch(17, ' TEST568', 56, 8),  # добавить i2c
+    Switch(19, ' TEST612', 61, 1),  # добавить i2c
+    Switch(20, ' TEST612', 61, 2),  # добавить i2c
+    Switch(21, ' TEST613', 61, 3),  # добавить i2c
+    Switch(22, ' TEST614', 61, 4),  # добавить i2c
+    Switch(23, ' TEST615', 61, 5),  # добавить i2c
+    Switch(24, ' TEST616', 61, 6),  # добавить i2c
+    Switch(25, ' TEST617', 61, 7),  # добавить i2c
+   
+    Switch(27, ' TEST580', 58, 0),  # добавить i2c
+    Switch(28, ' TEST581', 58, 1),  # добавить i2c
+    Switch(29, ' TEST582', 58, 2),  # добавить i2c
+    Switch(30, ' TEST583', 58, 3),  # добавить i2c
+    Switch(31, ' TEST584', 58, 4),  # добавить i2c
+    Switch(32, ' TEST585', 58, 5),  # добавить i2c
+    Switch(33, ' TEST586', 58, 6),  # добавить i2c
+    Switch(34, ' TEST587', 58, 7),  # добавить i2c
+   
+    Switch(36, ' TEST570', 57, 0),  # добавить i2c
+    Switch(37, ' TEST571', 57, 1),  # добавить i2c
+    Switch(38, ' TEST572', 57, 2),  # добавить i2c
+    Switch(39, ' TEST573', 57, 3),  # добавить i2c
+    Switch(40, ' TEST574', 57, 4),  # добавить i2c
+    Switch(41, ' TEST575', 57, 5),  # добавить i2c
+    Switch(42, ' TEST576', 57, 6),  # добавить i2c
+    Switch(43, ' TEST577', 57, 7),  # добавить i2c
+
+    Switch(45, ' TEST560', 56, 0),  # добавить i2c
+    Switch(46, ' TEST561', 56, 1),  # добавить i2c
+    Switch(47, ' TEST562', 56, 2),  # добавить i2c
+    Switch(48, ' TEST563', 56, 3),  # добавить i2c
+    Switch(49, ' TEST564', 56, 4),  # добавить i2c
+    Switch(50, ' TEST565', 56, 5),  # добавить i2c
+    Switch(51, ' TEST566', 56, 6),  # добавить i2c
+    Switch(52, ' TEST567', 56, 7),  # добавить i2c
+
     
 ])
 # ToDo
