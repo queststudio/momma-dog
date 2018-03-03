@@ -7,10 +7,6 @@ class PCF:
         self.pcfs = {}
 
     def set_state(self, address, port, state):
-        if (port > 7 or port < 0):
-            print("Invalid port!")
-            return
-
         try:
             if not self.pcfs.get(address):
                 from pcf8574 import PCF8574
