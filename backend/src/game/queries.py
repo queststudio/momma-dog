@@ -63,8 +63,3 @@ class SwitchExistsQuery(Query):
                 return True
 
         return False
-
-
-class GameQuery(Query):
-    def perform(self, state: State):
-        return state.game

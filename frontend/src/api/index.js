@@ -28,18 +28,9 @@ const puzzles = {
   }
 };
 
-const games = {
-  fetch: () => axios.get(`${baseUrl}/games/current`).then(result => result.data.game),
-  next: () => {
-    const url = `${baseUrl}/games/current`;
-    return axios.post(url);
-  }
-};
-
 
 export {
   switches,
   locks,
-  puzzles,
-  games
+  puzzles
 };

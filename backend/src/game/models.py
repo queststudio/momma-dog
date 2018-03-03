@@ -92,14 +92,12 @@ class Switch():
 
 
 class State():
-    def __init__(self, locks=[], switches=[], game=0):
+    def __init__(self, locks=[], switches=[]):
         self.locks = locks
         self.switches = switches
-        self.game = game
 
     def __eq__(self, other):
         return all([lock in other.locks for lock in self.locks]) \
                and len(self.locks) == len(other.locks) \
                and all([switch in other.switches for switch in self.switches]) \
-               and len(self.switches) == len(other.switches) \
-               and self.game == other.game
+               and len(self.switches) == len(other.switches)
