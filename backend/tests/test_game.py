@@ -60,12 +60,14 @@ class TestGame(TestCase):
         target = Game(test_state)
 
         test_action = Action()
-        def assertion(state): assert test_state == state
+        def assertion(state):
+            assert test_state == state
+            return state
         test_action.act = assertion
 
         target.act(test_action)
 
-    def test_act__updates_state(self):
+    def test_perform__query_gets_state(self):
         target = Game(test_state)
 
         test_query = Query()

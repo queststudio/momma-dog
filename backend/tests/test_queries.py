@@ -29,14 +29,14 @@ test_state = State(locks=[
 
 
 class TestUpdatePuzzleAction(TestCase):
-    def test_act__all_matches__returns_true(self):
+    def test_perform__all_matches__returns_true(self):
         target = PuzzleExistsQuery(Puzzle(6, 2))
 
         actual = target.perform(test_state)
 
         assert True == actual
 
-    def test_act__no_match__returns_false(self):
+    def test_perform__no_match__returns_false(self):
         targets = [PuzzleExistsQuery(Puzzle(4,6)),
                 PuzzleExistsQuery(Puzzle(0,0)),
                 PuzzleExistsQuery(Puzzle(7,3))]

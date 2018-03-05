@@ -3,6 +3,8 @@ from unittest import TestCase
 
 from src.game.actions import Action, UpdatePuzzleAction
 from src.game.models import State, Puzzle, Lock, PuzzleState
+from copy import deepcopy
+
 
 test_state = State(locks=[
     Lock('first', 0x3F, 1, [
@@ -34,7 +36,7 @@ class TestBasicAction(TestCase):
 
         actual = target.act(test_state)
 
-        assert test_state != actual
+        assert not test_state is actual
 
     def test_act__returns_a_copy(self):
         target = Action()
@@ -50,7 +52,7 @@ class TestUpdatePuzzleAction(TestCase):
 
         actual = target.act(test_state)
 
-        assert test_state != actual
+        assert not test_state is actual
 
 
     def test_act__updates_specified_puzzle(self):
@@ -61,3 +63,15 @@ class TestUpdatePuzzleAction(TestCase):
         actual = target.act(test_state)
 
         assert puzzle.state == actual.locks[5].puzzles[1].state
+
+
+    def test_act__cant_drop_solved_puzzle(self):
+        puzzle = Puzzle(6, 2)
+        puzzle.state = PuzzleState.NOT_PRESENT
+        target = UpdatePuzzleAction(puzzle)
+
+        new_test_state = deepcopy(test_state)
+        new_test_state.locks[5].puzzles[1].state = PuzzleState.SOLVED
+        actual = target.act(new_test_state)
+
+        assert PuzzleState.SOLVED == actual.locks[5].puzzles[1].state
