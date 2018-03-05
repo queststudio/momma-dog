@@ -12,7 +12,7 @@ class Reporters(Resource):
         if not devices:
             return 400
 
-        print(devices) # ToDo use logger
+        print('[{}] {}'.format(reporter, devices)) # ToDo use logger
 
         query = ReporterExistsQuery(reporter)
         reporter_exists = game.perform_query(query)
