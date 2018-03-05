@@ -8,8 +8,9 @@ class State extends Component {
     const {state} = this.props;
     const stateMap = {
       unknown:'не найден',
+      ['not present']: 'не найден',
       solved: 'решен',
-      unsolved: 'не решен'
+      ['not solved']: 'не решен',
     };
     return <p>{stateMap[state]}</p>
   }
