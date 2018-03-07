@@ -63,3 +63,11 @@ class SwitchExistsQuery(Query):
                 return True
 
         return False
+
+class LocksQuery(Query):
+    def perform(self, state: State):
+        return state.locks
+
+class PuzzlesQuery(Query):
+    def perform(self, state: State):
+        return [puzzle for lock in state.locks for puzzle in lock.puzzles]

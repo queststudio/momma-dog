@@ -28,7 +28,7 @@ test_state = State(locks=[
 ])
 
 
-class TestUpdatePuzzleAction(TestCase):
+class TestUpdatePuzzleQuery(TestCase):
     def test_perform__all_matches__returns_true(self):
         target = PuzzleExistsQuery(Puzzle(6, 2))
 

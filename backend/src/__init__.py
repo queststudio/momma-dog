@@ -4,14 +4,14 @@ from flask_cors import CORS
 
 from src.register_apis import register_apis
 from src.relays.render import render_state
-from src.game.game import game
+from src.game.store import store
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 api = Api(app)
 
-game.subscribe(render_state)
-game.trigger()
+store.subscribe(render_state)
+store.trigger()
 
 register_apis(api.add_resource)
 

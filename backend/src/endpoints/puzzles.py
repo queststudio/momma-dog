@@ -1,14 +1,16 @@
 from flask_restful import Resource, request
 
-from src.game.game import game
+from src.game.store import store
 from src.game.models import Puzzle, PuzzleState
 from src.game.actions import UpdatePuzzleAction
-from src.game.queries import PuzzleExistsQuery, PuzzleQuery
+from src.game.queries import PuzzleExistsQuery, PuzzleQuery, PuzzlesQuery
 
 
 class Puzzles(Resource):
     def get(self):
-        puzzles = game.get_puzzles()
+        query = PuzzlesQuery()
+        puzzles = store.perform_query(query)
+
         result = {
             'puzzles': [puzzle.serialize() for puzzle in puzzles]
         }
@@ -19,7 +21,7 @@ class ReporterPuzzles(Resource):
     def get(self, reporter: int, local_address: int):
         puzzle = Puzzle(reporter, local_address)
         query = PuzzleQuery(puzzle)
-        puzzle = game.perform_query(query)
+        puzzle = store.perform_query(query)
 
         if (puzzle):
             return puzzle.serialize(), 200
@@ -37,11 +39,11 @@ class ReporterPuzzles(Resource):
 
 
         query = PuzzleExistsQuery(puzzle)
-        puzzle_exists = game.perform_query(query)
+        puzzle_exists = store.perform_query(query)
 
         if (puzzle_exists):
             command = UpdatePuzzleAction(puzzle)
-            game.act(command)
+            store.act(command)
             return None, 200
         else:
             return None, 404

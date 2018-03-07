@@ -3,16 +3,10 @@ from src.game.actions import Action
 from src.game.queries import Query
 
 
-class Game():
+class Store():
 
     def __init__(self, state=None):
         self.state = state
-
-    def get_locks(self):  # ToDo move to queries
-        return self.state.locks
-
-    def get_puzzles(self):  # ToDo move to queries
-        return [puzzle for lock in self.state.locks for puzzle in lock.puzzles]
 
     def act(self, action: Action):
         new_state = action.act(self.state)
@@ -160,4 +154,4 @@ init_state = State(locks=[
 # };
 # Lock EXIT_lock(EXIT_puzzles, 1, 25);
 
-game = Game(init_state)
+store = Store(init_state)
