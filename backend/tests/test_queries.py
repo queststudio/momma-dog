@@ -64,6 +64,14 @@ class TestPuzzleQuery(TestCase):
 
         assert all(actual_returns)
 
+class TestPuzzlesQuery(TestCase):
+    def test_perform____returns_all_puzzles(self):
+        target = PuzzlesQuery()
+
+        actual = target.perform(test_state)
+
+        assert len(actual) == 8
+
 class TestReporterExistsQuery(TestCase):
     def test_perform__reporter_exists__returns_true(self):
         target = ReporterExistsQuery(test_puzzle.reporter)
@@ -78,3 +86,4 @@ class TestReporterExistsQuery(TestCase):
         actual_returns = [target.perform(test_state) == False for target in targets]
 
         assert all(actual_returns)
+
