@@ -18,10 +18,7 @@ class RelayService:
 
         try:
             pcf = self._factory.create(address)
-            print(pcf.port[port])
-            print(state)
             if pcf.port[port] != state:
-                print('happens')
                 pcf.port[port] = state
         except IOError:
             print('I2C not available')

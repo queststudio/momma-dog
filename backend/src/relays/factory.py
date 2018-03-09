@@ -1,6 +1,6 @@
 # ToDo use logger
 
-def _create_pcf(port, address):
+def create_pcf(port, address):
     try:
         from pcf8574 import PCF8574
         return PCF8574(port, address)
@@ -19,3 +19,4 @@ class RelayFactory:
             self._pcfs[address] = self._create_relay(self.i2c_port, address)
 
         return self._pcfs.get(address)
+
