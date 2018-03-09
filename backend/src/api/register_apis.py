@@ -13,4 +13,4 @@ def register_apis(register_resource):
     register_resource(ReporterPuzzles, api_base + '/reporters/<reporter>/puzzles/<int:local_address>')
     register_resource(Reporters, api_base + '/reporters/<reporter>')
     register_resource(Switch, api_base + '/switches/<int:id>')
-    register_resource(Switches, api_base + '/switches.api.')
+    register_resource(Switches, api_base + '/switches')
