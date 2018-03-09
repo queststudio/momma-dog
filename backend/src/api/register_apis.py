@@ -1,8 +1,8 @@
-from src.endpoints.health import Health
-from src.endpoints.locks import Locks
-from src.endpoints.puzzles import Puzzles, ReporterPuzzles
-from src.endpoints.reporters import Reporters
-from src.endpoints.switches import Switches, Switch
+from src.api.endpoints.health import Health
+from src.api.endpoints.locks import Locks
+from src.api.endpoints.puzzles import Puzzles, ReporterPuzzles
+from src.api.endpoints.reporters import Reporters
+from src.api.endpoints.switches import Switches, Switch
 
 api_base = '/api'
 
