@@ -1,7 +1,7 @@
 import pytest
 from unittest import TestCase
 
-from src.game.queries import PuzzleExistsQuery, ReporterExistsQuery, PuzzlesQuery, PuzzleQuery
+from src.game.queries import PuzzleExistsQuery, ReporterExistsQuery, PuzzlesQuery, PuzzleQuery, LocksQuery
 from src.game.models import State, Puzzle, Lock, PuzzleState
 
 test_puzzle = Puzzle(6, 2)
@@ -87,3 +87,10 @@ class TestReporterExistsQuery(TestCase):
 
         assert all(actual_returns)
 
+class TestLocksQuery(TestCase):
+    def test_perform____returns_all_locks(self):
+        target = LocksQuery()
+
+        actual = target.perform(test_state)
+
+        assert len(actual) == 6
