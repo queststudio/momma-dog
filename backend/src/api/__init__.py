@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Api
 from flask_cors import CORS
 
-from src.register_apis import register_apis
+from src.api.register_apis import register_apis
 from src.relays.render import render_state
 from src.game.store import store
 

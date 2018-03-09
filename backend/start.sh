@@ -1,3 +1,3 @@
 #!/bin/bash
 
-gunicorn -c 'gunicorn_config.py' src/api:app
+gunicorn -c 'gunicorn_config.py' src.api:app
