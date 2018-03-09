@@ -4,7 +4,7 @@ from src.relays.factory import RelayFactory
 # ToDo use logger
 
 def _is_port_valid(port):
-    return port > 7 or port < 0
+    return port <= 7 or port > 0
 
 
 class RelayService:
