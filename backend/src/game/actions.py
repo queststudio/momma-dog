@@ -18,14 +18,14 @@ class UpdatePuzzleAction(Action):
             for puzzle in lock.puzzles:
                 if (puzzle.reporter == self.puzzle.reporter
                     and puzzle.local_address == self.puzzle.local_address):
-                    if(puzzle.state != PuzzleState.SOLVED):
+                    if (puzzle.state != PuzzleState.SOLVED):
                         puzzle.state = self.puzzle.state
 
         return new_state
 
 
 class UpdateSwitchAction(Action):
-    def __init__(self, id: int, state:SwitchState):
+    def __init__(self, id: int, state: SwitchState):
         self.id = id
         self.state = state
 
@@ -35,4 +35,11 @@ class UpdateSwitchAction(Action):
             if (switch.id == self.id):
                 switch.state = self.state
 
+        return new_state
+
+
+class RestartAction(Action):
+    def act(self, state: State):
+        new_state = deepcopy(state)
+        new_state.game = state.game + 1
         return new_state
