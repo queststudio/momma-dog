@@ -1,6 +1,6 @@
 import pytest
 from unittest import TestCase
-from unittest.mock import Mock
+from unittest.mock import Mock, call
 
 from src.game.store import Store
 from src.game.actions import Action
@@ -78,6 +78,50 @@ class TestStore(TestCase):
         target.act(test_action)
 
         subscriber.assert_not_called()
+
+    def test_act__one_middleware__middleware_is_called(self):
+        sideeffect = Mock()
+
+        def middleware(next):
+            def apply(action):
+                sideeffect()
+                next(action)
+
+            return apply
+
+        target = Store(test_state, [middleware])
+        test_action = Action()
+
+        target.act(test_action)
+
+        sideeffect.assert_called_once()
+
+    def test_act__two_middlewares__middlewares_are_called(self):
+        sideeffect = Mock()
+
+        def middleware1(next):
+            def apply(action):
+                sideeffect(1)
+                next(action)
+
+            return apply
+
+        def middleware2(next):
+            def apply(action):
+                sideeffect(2)
+                next(action)
+
+            return apply
+
+        target = Store(test_state, [middleware1, middleware2])
+        test_action = Action()
+
+        target.act(test_action)
+
+        sideeffect.assert_has_calls([
+            call(1),
+            call(2)
+        ])
 
     def test_perform__query_gets_state(self):
         target = Store(test_state)
