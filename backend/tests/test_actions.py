@@ -43,7 +43,7 @@ class TestBasicAction(TestCase):
 
         actual = target.act(test_state)
 
-#         ToDo test for deep equality
+        assert test_state == actual
 
 
 class TestUpdatePuzzleAction(TestCase):
