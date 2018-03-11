@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Locks from './containers/Locks';
 import Switches from './containers/Switches';
+import Game from './containers/Game'
 
 class App extends Component {
   render() {
@@ -13,6 +14,8 @@ class App extends Component {
           <h1 className="App-title">Контрольная панель</h1>
         </header>
         <div className="App-content">
+          <Game/>
+          <br/>
           <Locks/>
           <br/>
           <Switches/>
