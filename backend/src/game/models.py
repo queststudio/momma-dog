@@ -97,7 +97,8 @@ class State():
         self.switches = switches
 
     def __eq__(self, other):
-        return all([lock in other.locks for lock in self.locks]) \
+        return isinstance(other, State) \
+               and all([lock in other.locks for lock in self.locks]) \
                and len(self.locks) == len(other.locks) \
                and all([switch in other.switches for switch in self.switches]) \
                and len(self.switches) == len(other.switches)

@@ -7,6 +7,7 @@ class Store():
 
     def __init__(self, state=None):
         self.state = state
+        self.__subscriber = None
 
     def act(self, action: Action):
         new_state = action.act(self.state)
