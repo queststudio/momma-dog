@@ -1,16 +1,25 @@
+from functools import reduce
+
 from src.game.models import State, Lock, Puzzle, Switch
 from src.game.actions import Action
 from src.game.queries import Query
 
+def _combine_middlewares(middlewares):
+    empty_middleware = lambda next: lambda action: next(action)
+    combine_middlewares = lambda first, second: lambda next: first(second(next))
+    middleware = reduce(combine_middlewares, [empty_middleware] + middlewares)
+    return middleware
 
 class Store():
+    def __init__(self, initial_state=None, middlewares=[]):
+        self.state = initial_state
+        self._subscriber = None
 
-    def __init__(self, state=None):
-        self.state = state
-        self.__subscriber = None
+        self._middleware = _combine_middlewares(middlewares)
 
     def act(self, action: Action):
-        new_state = action.act(self.state)
+        act = lambda action: action.act(self.state)
+        new_state = self._middleware(act)(action)
 
         if new_state == self.state:
             return
@@ -20,14 +29,14 @@ class Store():
         self.trigger()
 
     def trigger(self):
-        if self.__subscriber:
-            self.__subscriber(self.state)
+        if self._subscriber:
+            self._subscriber(self.state)
 
     def perform_query(self, query: Query):
         return query.perform(self.state)
 
     def subscribe(self, subscriber):
-        self.__subscriber = subscriber
+        self._subscriber = subscriber
 
 
 init_state = State(locks=[
@@ -101,7 +110,7 @@ init_state = State(locks=[
     Switch(14, ' дверь 2 -Театр  ', 61, 1),  # добавить i2c
     Switch(15, ' дверь 3 -Кладбище', 61, 6),  # добавить i2c
     Switch(16, ' дверь 4 -Тёмная', 61, 2),  # добавить i2c
-    
+
 ])
 # ToDo
 # Puzzle chest_2_puzzles [1] = {
