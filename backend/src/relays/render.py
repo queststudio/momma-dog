@@ -1,23 +1,12 @@
 from src.game.models import LockState, Lock, State, SwitchState, Switch
-from src.relays.service import RelayService
-from src.relays.factory import RelayFactory, create_pcf
-
-# ToDo use logger
-factory = RelayFactory(1, create_pcf)
-service = RelayService(factory)
-
-
-def render(address, port, state):
-    print('Rendering: ' + str(address) + ' ' + str(port) + ' ' + str(state))
-    service.set_state(address, port, state)
-
+from src.relays.set_state import set_state
 
 def render_lock(lock: Lock):
-    render(lock.address, lock.port, False if lock.state == LockState.OPEN else True)
+    set_state(lock.address, lock.port, False if lock.state == LockState.OPEN else True)
 
 
 def render_switch(switch: Switch):
-    render(switch.address, switch.port, False if switch.state == SwitchState.ON else True)
+    set_state(switch.address, switch.port, False if switch.state == SwitchState.ON else True)
 
 
 def render_state(state: State):
