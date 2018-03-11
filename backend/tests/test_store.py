@@ -1,5 +1,6 @@
 import pytest
 from unittest import TestCase
+from unittest.mock import Mock
 
 from src.game.store import Store
 from src.game.actions import Action
@@ -30,13 +31,13 @@ test_state = State(locks=[
 ])
 
 
-class TestGame(TestCase):
+class TestStore(TestCase):
 
     def test_act__updates_state(self):
         expected = {'some': 'object'}
         target = Store(test_state)
         test_action = Action()
-        test_action.act = lambda state: expected
+        test_action.act = Mock(return_value=expected)
 
         target.act(test_action)
 
@@ -54,6 +55,29 @@ class TestGame(TestCase):
         test_action.act = assertion
 
         target.act(test_action)
+
+    def test_act__state_changed__subscriber_triggered(self):
+        expected = {'some': 'object'}
+        target = Store(test_state)
+        subscriber = Mock()
+        target.subscribe(subscriber)
+        test_action = Action()
+        test_action.act = Mock(return_value=expected)
+
+        target.act(test_action)
+
+        subscriber.assert_called_once()
+
+    def test_act__state_not_changed__subscriber_not_triggered(self):
+        target = Store(test_state)
+        subscriber = Mock()
+        target.subscribe(subscriber)
+        test_action = Action()
+        test_action.act = lambda state: state
+
+        target.act(test_action)
+
+        subscriber.assert_not_called()
 
     def test_perform__query_gets_state(self):
         target = Store(test_state)
