@@ -2,7 +2,7 @@ import pytest
 from unittest import TestCase
 
 from src.game.actions import Action, UpdatePuzzleAction, RestartAction
-from src.game.models import State, Puzzle, Lock, PuzzleState
+from src.game.models import State, Puzzle, Lock, PuzzleState, Switch
 from copy import deepcopy
 
 test_state = State(locks=[
@@ -77,15 +77,34 @@ class TestUpdatePuzzleAction(TestCase):
 
 class TestRestartAction(TestCase):
     def test_act__returns_another_object(self):
-        target = RestartAction()
+        init_state = State()
+        target = RestartAction(init_state)
 
         actual = target.act(test_state)
 
         assert not test_state is actual
+        assert not init_state is actual
 
     def test_act__increments_game(self):
-        target = RestartAction()
+        init_state = State(game=0)
+        target = RestartAction(init_state)
 
-        actual = target.act(State(game=1))
+        actual = target.act(State(game=3))
 
-        assert 2 == actual.game
+        assert 4 == actual.game
+
+    def test_act__resets_locks(self):
+        init_state = State(locks=[Lock(), Lock()], game=0)
+        target = RestartAction(init_state)
+
+        actual = target.act(State(locks=[], game=3))
+
+        assert 2 == len(actual.locks)
+
+    def test_act__resets_switches(self):
+        init_state = State(switches=[Switch(), Switch()], game=0)
+        target = RestartAction(init_state)
+
+        actual = target.act(State(switches=[], game=3))
+
+        assert 2 == len(actual.switches)

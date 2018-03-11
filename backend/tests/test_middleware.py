@@ -2,6 +2,7 @@ from unittest import TestCase
 from unittest.mock import Mock
 from src.game.middlewares import restart_middleware_creator
 from src.game.actions import Action, RestartAction
+from src.game.models import State
 
 
 class TestRestartMiddleware(TestCase):
@@ -26,7 +27,7 @@ class TestRestartMiddleware(TestCase):
 
     def test_middleware__restart_action__restart_called(self):
         next = Mock()
-        action = RestartAction()
+        action = RestartAction(State())
         restart = Mock()
         middleware = restart_middleware_creator(restart)
 
@@ -47,7 +48,7 @@ class TestRestartMiddleware(TestCase):
     def test_middleware__restart_action__returns_what_next_returns(self):
         expected = {'some': 'thing'}
         next = Mock(return_value=expected)
-        action = RestartAction()
+        action = RestartAction(State())
         restart = Mock()
         middleware = restart_middleware_creator(restart)
 
