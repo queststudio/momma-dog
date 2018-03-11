@@ -39,7 +39,10 @@ class UpdateSwitchAction(Action):
 
 
 class RestartAction(Action):
+    def __init__(self, init_state):
+        self._init_state = init_state
+
     def act(self, state: State):
-        new_state = deepcopy(state)
+        new_state = deepcopy(self._init_state)
         new_state.game = state.game + 1
         return new_state
