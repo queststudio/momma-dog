@@ -111,7 +111,7 @@ init_state = State(locks=[
     Switch(15, ' дверь 3 -Кладбище', 61, 6),  # добавить i2c
     Switch(16, ' дверь 4 -Тёмная', 61, 2),  # добавить i2c
 
-])
+], game=1)
 # ToDo
 # Puzzle chest_2_puzzles [1] = {
 #   Puzzle(16)
