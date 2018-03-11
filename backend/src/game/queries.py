@@ -73,3 +73,7 @@ class LocksQuery(Query):
 class PuzzlesQuery(Query):
     def perform(self, state: State):
         return [puzzle for lock in state.locks for puzzle in lock.puzzles]
+
+class GameQuery(Query):
+    def perform(self, state: State):
+        return state.game
