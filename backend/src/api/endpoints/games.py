@@ -3,7 +3,6 @@ from flask_restful import Resource, request
 from src.game.store import store, init_state
 from src.game.actions import RestartAction
 from src.game.queries import GameQuery
-from src.relays.restart import restart
 
 
 class CurrentGame(Resource):
