@@ -12,8 +12,9 @@ api = Api(app)
 store = create_store()
 store.trigger()
 
+dependencies = {'store': store}
 
-register_apis(api.add_resource)
+register_apis(api.add_resource, dependencies)
 
 if __name__ == '__main__':
     app.run(debug=True)
