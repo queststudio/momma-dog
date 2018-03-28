@@ -33,6 +33,7 @@
 
 .lock {
     width: 170px;
+    min-height: 200px;
     float: left;
     margin: 10px;
     padding: 5px;
@@ -54,6 +55,7 @@
 
 .switch {
     width: 170px;
+    min-height: 110px;
     float: left;
     margin: 10px;
     padding: 5px;
@@ -69,8 +71,7 @@
 }
 
 .puzzle {
-    margin: 10px;
-    padding: 5px;
+    padding: 10px;
 }
 
 .game-panel {
@@ -86,6 +87,10 @@
     margin: 10px;
     padding: 5px;
     background-color: #eca1a6;
+}
+
+.puzzles {
+    padding: 10px;
 }
 
 @keyframes App-logo-spin {
