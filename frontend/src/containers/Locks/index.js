@@ -3,7 +3,7 @@ import LoadingError from '../../LoadingError';
 import Loading from '../../Loading';
 import {locks, puzzles} from '../../api/index';
 
-class State extends Component {
+class PuzzleState extends Component {
   render(){
     const {state} = this.props;
     const stateMap = {
@@ -12,7 +12,7 @@ class State extends Component {
       solved: 'решен',
       ['not solved']: 'не решен',
     };
-    return <p>{stateMap[state]}</p>
+    return stateMap[state];
   }
 }
 
@@ -23,11 +23,20 @@ class Puzzle extends Component {
     const className = ['puzzle', solvedClass].join(' ');
     return (
       <div className={className} onClick={()=>onStateChanged(reporter, local_address, 'solved')}>
-        <p>{reporter}</p>
-        <p>{local_address}</p>
-        <State state={state}/>
+        <PuzzleState state={state}/>
       </div>
     );
+  }
+}
+
+class LockState extends Component {
+  render(){
+    const {state} = this.props;
+    const stateMap = {
+      open:'решен',
+      closed: 'не решен',
+    };
+    return <p>{stateMap[state]}</p>
   }
 }
 
@@ -37,8 +46,8 @@ class Lock extends Component {
     return (
       <div className='lock'>
         <p>{label}</p>
-        <p>{state}</p>
-        <div>
+        <LockState state={state}/>
+        <div className='puzzles'>
           {puzzles.map(puzzle => <Puzzle {...puzzle} onStateChanged={onPuzzleStateChanged}/>)}
         </div>
       </div>
