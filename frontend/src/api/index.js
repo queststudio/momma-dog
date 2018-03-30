@@ -8,7 +8,8 @@ const locks = {
 };
 
 const switches = {
-  fetch: () => axios.get(`${baseUrl}/switches`).then(result => result.data.switches),
+  fetch: () =>
+    axios.get(`${baseUrl}/switches`).then(result => result.data.switches),
   set: (id, state) => {
     const body = {
       state
@@ -29,17 +30,12 @@ const puzzles = {
 };
 
 const games = {
-  fetch: () => axios.get(`${baseUrl}/games/current`).then(result => result.data.game),
+  fetch: () =>
+    axios.get(`${baseUrl}/games/current`).then(result => result.data.game),
   next: () => {
     const url = `${baseUrl}/games/current`;
     return axios.post(url);
   }
 };
 
-
-export {
-  switches,
-  locks,
-  games,
-  puzzles
-};
+export { switches, locks, games, puzzles };

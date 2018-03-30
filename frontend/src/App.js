@@ -1,24 +1,24 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Locks from './containers/Locks';
 import Switches from './containers/Switches';
-import Game from './containers/Game'
+import Game from './containers/Game';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo"/>
+          <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Контрольная панель</h1>
         </header>
         <div className="App-content">
-          <Game/>
-          <br/>
-          <Locks/>
-          <br/>
-          <Switches/>
+          <Game />
+          <br />
+          <Locks />
+          <br />
+          <Switches />
         </div>
       </div>
     );

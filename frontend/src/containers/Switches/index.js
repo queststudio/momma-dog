@@ -1,11 +1,11 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 import LoadingError from '../../LoadingError';
 import Loading from '../../Loading';
-import {switches} from '../../api/index';
+import { switches } from '../../api/index';
 
 class State extends Component {
   render() {
-    const {state} = this.props;
+    const { state } = this.props;
     const stateMap = {
       on: 'вкл',
       off: 'выкл'
@@ -16,7 +16,7 @@ class State extends Component {
 
 class Switch extends Component {
   render() {
-    const {id, label, state, changeState} = this.props;
+    const { id, label, state, changeState } = this.props;
     const toggled = state === 'on' ? 'off' : 'on';
     const onStateChanged = () => changeState(id, toggled);
     const stateClass = state === 'on' ? 'switch-on' : 'switch-off';
@@ -24,7 +24,7 @@ class Switch extends Component {
     return (
       <div className={className} onClick={onStateChanged}>
         <p>{label}</p>
-        <State state={state}/>
+        <State state={state} />
       </div>
     );
   }
@@ -44,21 +44,24 @@ class Switches extends Component {
 
   loadData() {
     const self = this;
-    switches.fetch().then((switches) => {
-      self.setState({
-        ...self.state,
-        switches,
-        loading: false,
-        error: false
+    switches
+      .fetch()
+      .then(switches => {
+        self.setState({
+          ...self.state,
+          switches,
+          loading: false,
+          error: false
+        });
       })
-    }).catch((err) => {
-      console.log(err);
-      self.setState({
-        ...self.state,
-        loading: false,
-        error: true
-      })
-    });
+      .catch(err => {
+        console.log(err);
+        self.setState({
+          ...self.state,
+          loading: false,
+          error: true
+        });
+      });
   }
 
   componentDidMount() {
@@ -67,24 +70,27 @@ class Switches extends Component {
 
   changeSwitchState(id, state) {
     const self = this;
-    switches.set(id, state)
-      .then(() => self.loadData());
+    switches.set(id, state).then(() => self.loadData());
   }
 
   render() {
-    const {loading, switches, error} = this.state;
-    const main = loading
-      ? <Loading/>
-      : error
-        ? <LoadingError/>
-        : switches.map(lock => <Switch {...lock} changeState={this.changeSwitchState}/>);
+    const { loading, switches, error } = this.state;
+    const main = loading ? (
+      <Loading />
+    ) : error ? (
+      <LoadingError />
+    ) : (
+      switches.map(lock => (
+        <Switch {...lock} changeState={this.changeSwitchState} />
+      ))
+    );
 
     return (
       <div className="switches">
         <p>Выключатели</p>
         {main}
       </div>
-    )
+    );
   }
 }
 
