@@ -78,7 +78,7 @@ init_state = State(locks=[
     ]),
  
     Lock('Крест', 61, 5, [
-        Puzzle('5e:cf:7f:89:2a:9a', 20)  # вставлен
+        Puzzle('5C:CF:7F:87:56:5C', 19)  # вставлен
     ]),
     Lock('сундук 1', 58, 2, [
         Puzzle('5e:cf:7f:87:56:52', 15)  # вставить MAC
