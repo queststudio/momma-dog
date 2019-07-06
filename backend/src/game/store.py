@@ -41,132 +41,81 @@ class Store():
 
 init_state = State(locks=[
     Lock('Гнев', 56, 0, [
-        Puzzle('62:01:94:70:63:9d', 8)  # выставлен
+        Puzzle('62:01:94:70:63:9d', 8) 
     ]),
     Lock('Уныние', 56, 1, [
-        Puzzle('a2:20:a6:02:08:b4', 11)  # выставлен
+        Puzzle('a2:20:a6:02:08:b4', 11) 
     ]),
     Lock('Гордыня - свет', 56, 2, [
-        Puzzle('5e:cf:7f:89:2a:9a', 12)  # вставлен
+        Puzzle('5e:cf:7f:89:2a:9a', 12) 
     ]),
     Lock('Гордыня - код', 56, 3, [
-        Puzzle('5e:cf:7f:89:2a:9a', 13)  # вставлен
+        Puzzle('5e:cf:7f:89:2a:9a', 13) 
     ]),
     Lock('Алчность', 56, 4, [
-        Puzzle('a2:20:a6:13:2d:80', 14)  # вставлен
+        Puzzle('a2:20:a6:13:2d:80', 14) 
     ]),
     Lock('Обжорство - конфеты', 56, 7, [
-        Puzzle('62:01:94:70:67:b3', 21)  # вставлен
+        Puzzle('62:01:94:70:67:b3', 21) 
     ]),
     Lock('Обжорство - фрукты', 57, 0, [
         Puzzle('62:01:94:70:67:b3', 22),
-        Puzzle('62:01:94:70:67:b3', 23)  # вставилен
+        Puzzle('62:01:94:70:67:b3', 23) 
          ]),
   
     Lock('Сцена КОД', 57, 7, [
-        Puzzle('a2:20:a6:02:67:a9', 25)  # вставлен
+        Puzzle('a2:20:a6:02:67:a9', 25)
     ]),
 
     Lock('Театр ВЫХОД ', 57, 6, [
-        Puzzle('a2:20:a6:12:2a:9b', 24)  # вставлено
+        Puzzle('a2:20:a6:12:2a:9b', 24)
     ]),
    
               
     
     Lock('темная комната ВЫХОД', 57, 5, [
-        Puzzle('5e:cf:7f:1a:b6:2e', 9)  # вставлен
+        Puzzle('5e:cf:7f:1a:b6:2e', 9)
     ]),
  
     Lock('Крест', 61, 5, [
-        Puzzle('5e:cf:7f:87:56:5c', 20)  # вставлен
+        Puzzle('5e:cf:7f:87:56:5c', 20)
     ]),
     Lock('сундук 1', 58, 2, [
-        Puzzle('5e:cf:7f:87:56:52', 15)  # вставить MAC
+        Puzzle('5e:cf:7f:87:56:52', 15)
     ]),
     Lock('сундук 2', 58, 5, [
-        Puzzle('5e:cf:7f:1a:ba:df', 16)  # вставить MAC
+        Puzzle('5e:cf:7f:1a:ba:df', 16)
     ]),
     Lock('сундук 3', 58, 1, [
-        Puzzle('5e:cf:7f:1b:60:98', 17)  # вставить MAC
+        Puzzle('5e:cf:7f:1b:60:98', 17)
     ]),
     Lock('сундук 4', 58, 0, [
-        Puzzle('62:01:94:70:58:ed', 18)  # вставить MAC огонь
+        Puzzle('62:01:94:70:58:ed', 18)
     ])
 
 ], switches=[
 
-    Switch(9, 'Гардероб дверь  ', 61, 3),  # добавить i2c
-    Switch(1, 'Зависть', 56, 5),  # добавлен
-    Switch(2, 'Похоть', 56, 6),  # добавлен
-    Switch(3, 'Выход 7грехов', 57, 2),  # добавлен
+    Switch(9, 'Гардероб дверь  ', 61, 3),
+    Switch(1, 'Зависть', 56, 5),
+    Switch(2, 'Похоть', 56, 6),
+    Switch(3, 'Выход 7грехов', 57, 2),
   
-    Switch(4, 'Зеркало (нажать чтобы задача заработала)', 58, 7),  # добавить i2c
-    Switch(5, 'Сцена Театр ниша ', 57, 1),  # добавлен
+    Switch(4, 'Зеркало (нажать чтобы задача заработала)', 58, 7),
+    Switch(5, 'Сцена Театр ниша ', 57, 1),
    
-    Switch(7, 'Темная комната - LED(Включатель!)', 58, 3),  # добавил
-    Switch(6, 'Свет темная комната - LED(Выключатель)', 57, 3),  # добавил
+    Switch(7, 'Темная комната - LED(Включатель!)', 58, 3),
+    Switch(6, 'Свет темная комната - LED(Выключатель)', 57, 3),
     
-    Switch(10, 'крест подсветка ', 58, 6),  # добавить i2c
-    Switch(11, ' Финал ', 61, 0),  # добавлен
+    Switch(10, 'крест подсветка ', 58, 6),
+    Switch(11, ' Финал ', 61, 0),
     
-    Switch(13, ' дверь 1 -Красная комната', 61, 7),  # добавить i2c
-    Switch(14, ' дверь 2 -Театр  ', 61, 1),  # добавить i2c
-    Switch(15, ' дверь 3 -Кладбище', 61, 6),  # добавить i2c
-    Switch(16, ' дверь 4 -Тёмная', 61, 2),  # добавить i2c
+    Switch(13, ' дверь 1 -Красная комната', 61, 7),
+    Switch(14, ' дверь 2 -Театр  ', 61, 1),
+    Switch(15, ' дверь 3 -Кладбище', 61, 6),
+    Switch(16, ' дверь 4 -Тёмная', 61, 2),
     
-    Switch(12, 'Рестарт(перед перезагрузкой)', 58, 4),  # добавлен
+    Switch(12, 'Рестарт(перед перезагрузкой)', 58, 4),
 
 ], game=1)
-# ToDo
-# Puzzle chest_2_puzzles [1] = {
-#   Puzzle(16)
-# };
-# Lock chest_2_lock(chest_2_puzzles, 1, 16);
-# 
-# Puzzle chest_3_puzzles [1] = {
-#   Puzzle(17)
-# };
-# Lock chest_3_lock(chest_3_puzzles, 1, 17);
-# 
-# Puzzle chest_4_puzzles [1] = {
-#   Puzzle(18)
-# };
-# Lock chest_4_lock(chest_4_puzzles, 1, 18);
-# 
-# Puzzle mirror_puzzles [1] = {
-#   Puzzle(19)
-# };
-# Lock mirror_lock(mirror_puzzles, 1, 19);
-# 
-# Puzzle crucifix_puzzles [1] = {
-#   Puzzle(20)
-# };
-# Lock crucifix_lock(crucifix_puzzles, 1, 20);
-# 
-# Puzzle gula_candy_puzzles [1] = {
-#   Puzzle(21)
-# };
-# Lock gula_candy_lock(gula_candy_puzzles, 1, 21);
-# 
-# Puzzle gula_fruit_puzzles [2] = {
-#   Puzzle(22),
-#   Puzzle(23)
-# };
-# Lock gula_fruit_lock(gula_fruit_puzzles, 2, 22);
-# 
-#   Puzzle code_panel1_puzzles [1] = {
-#   Puzzle(24),
-# };
-# Lock code_panel1_lock(code_panel1_puzzles, 1, 23);
-# 
-#   Puzzle code_panel2_puzzles [1] = {
-#   Puzzle(25),  
-# };
-# Lock code_panel2_lock(code_panel2_puzzles, 1, 24);
-# 
-#     Puzzle EXIT_puzzles [1] = {
-#     Puzzle(26),
-# };
-# Lock EXIT_lock(EXIT_puzzles, 1, 25);
 
 store = Store(init_state)
