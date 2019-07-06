@@ -3,6 +3,8 @@ services:
   nginx:
     build: ./frontend
     container_name: ng01
+    environment:
+     - NODE_ENV=production
     ports:
       - "8000:8000"
     depends_on:
