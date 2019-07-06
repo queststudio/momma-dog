@@ -23,8 +23,8 @@ class Puzzle():
 
     def __eq__(self, other):
         return self.reporter == other.reporter \
-               and self.local_address == other.local_address \
-               and self.state == other.state
+            and self.local_address == other.local_address \
+            and self.state == other.state
 
 
 class LockState(Enum):
@@ -41,7 +41,8 @@ class Lock():
 
     @property
     def state(self):
-        open = all([puzzle.state == PuzzleState.SOLVED for puzzle in self.puzzles])
+        open = all(
+            [puzzle.state == PuzzleState.SOLVED for puzzle in self.puzzles])
         return LockState.OPEN if open else LockState.CLOSED
 
     def serialize(self):
@@ -55,10 +56,10 @@ class Lock():
 
     def __eq__(self, other):
         return self.label == other.label \
-               and self.address == other.address \
-               and self.port == other.port \
-               and all([puzzle in other.puzzles for puzzle in self.puzzles]) \
-               and len(self.puzzles) == len(other.puzzles)
+            and self.address == other.address \
+            and self.port == other.port \
+            and all([puzzle in other.puzzles for puzzle in self.puzzles]) \
+            and len(self.puzzles) == len(other.puzzles)
 
 
 class SwitchState(Enum):
@@ -85,10 +86,10 @@ class Switch():
 
     def __eq__(self, other):
         return self.id == other.id \
-               and self.label == other.label \
-               and self.address == other.address \
-               and self.port == other.port \
-               and self.state == other.state
+            and self.label == other.label \
+            and self.address == other.address \
+            and self.port == other.port \
+            and self.state == other.state
 
 
 class State():
@@ -99,8 +100,8 @@ class State():
 
     def __eq__(self, other):
         return isinstance(other, State) \
-               and all([lock in other.locks for lock in self.locks]) \
-               and len(self.locks) == len(other.locks) \
-               and all([switch in other.switches for switch in self.switches]) \
-               and len(self.switches) == len(other.switches) \
-               and self.game == other.game
+            and all([lock in other.locks for lock in self.locks]) \
+            and len(self.locks) == len(other.locks) \
+            and all([switch in other.switches for switch in self.switches]) \
+            and len(self.switches) == len(other.switches) \
+            and self.game == other.game

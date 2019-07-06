@@ -8,7 +8,7 @@ magic_mock = MagicMock()
 
 class TestRelayFactory(TestCase):
     def test_create__empty__creates_new_relay(self):
-        create_relay = lambda port, address: {'address': address}
+        def create_relay(port, address): return {'address': address}
         target = RelayFactory(1, create_relay)
 
         actual = target.create(11)
@@ -16,7 +16,7 @@ class TestRelayFactory(TestCase):
         assert actual.get('address') == 11
 
     def test_create__called_twice__returns_the_same_object(self):
-        create_relay = lambda port, address: {'address': address}
+        def create_relay(port, address): return {'address': address}
         target = RelayFactory(1, create_relay)
 
         actual1 = target.create(11)

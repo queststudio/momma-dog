@@ -8,5 +8,6 @@ service = RelayService(factory)
 
 
 def set_state(address, port, state):
-    print('Setting state: ' + str(address) + ' ' + str(port) + ' ' + str(state))
+    print('Setting state: ' + str(address) +
+          ' ' + str(port) + ' ' + str(state))
     service.set_state(address, port, state)

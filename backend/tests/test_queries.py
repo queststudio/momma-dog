@@ -39,7 +39,8 @@ test_state = State(locks=[
 
 class TestPuzzleExistsQuery(TestCase):
     def test_perform__all_matches__returns_true(self):
-        target = PuzzleExistsQuery(Puzzle(test_puzzle.reporter, test_puzzle.local_address))
+        target = PuzzleExistsQuery(
+            Puzzle(test_puzzle.reporter, test_puzzle.local_address))
 
         actual = target.perform(test_state)
 
@@ -50,14 +51,16 @@ class TestPuzzleExistsQuery(TestCase):
                    PuzzleExistsQuery(Puzzle(0, 0)),
                    PuzzleExistsQuery(Puzzle(7, 3))]
 
-        actual_returns = [target.perform(test_state) == False for target in targets]
+        actual_returns = [target.perform(
+            test_state) == False for target in targets]
 
         assert all(actual_returns)
 
 
 class TestPuzzleQuery(TestCase):
     def test_perform__all_matches__returns_puzzle(self):
-        target = PuzzleQuery(Puzzle(test_puzzle.reporter, test_puzzle.local_address))
+        target = PuzzleQuery(
+            Puzzle(test_puzzle.reporter, test_puzzle.local_address))
 
         actual = target.perform(test_state)
 
@@ -68,7 +71,8 @@ class TestPuzzleQuery(TestCase):
                    PuzzleQuery(Puzzle(0, 0)),
                    PuzzleQuery(Puzzle(7, 3))]
 
-        actual_returns = [target.perform(test_state) == None for target in targets]
+        actual_returns = [target.perform(
+            test_state) == None for target in targets]
 
         assert all(actual_returns)
 
@@ -93,7 +97,8 @@ class TestReporterExistsQuery(TestCase):
     def test_perform__reporter_doesnt_exist__returns_false(self):
         targets = [ReporterExistsQuery(100)]
 
-        actual_returns = [target.perform(test_state) == False for target in targets]
+        actual_returns = [target.perform(
+            test_state) == False for target in targets]
 
         assert all(actual_returns)
 

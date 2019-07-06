@@ -42,7 +42,6 @@ class ReporterPuzzles(Resource):
 
         puzzle.state = PuzzleState(new_state)
 
-
         query = PuzzleExistsQuery(puzzle)
         puzzle_exists = self.store.perform_query(query)
 

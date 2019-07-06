@@ -15,7 +15,7 @@ class PuzzleExistsQuery(Query):
         for lock in state.locks:
             for puzzle in lock.puzzles:
                 if (puzzle.reporter == self.puzzle.reporter
-                    and puzzle.local_address == self.puzzle.local_address):
+                        and puzzle.local_address == self.puzzle.local_address):
                     return True
 
         return False
@@ -29,7 +29,7 @@ class PuzzleQuery(Query):
         for lock in state.locks:
             for puzzle in lock.puzzles:
                 if (puzzle.reporter == self.puzzle.reporter
-                    and puzzle.local_address == self.puzzle.local_address):
+                        and puzzle.local_address == self.puzzle.local_address):
                     return puzzle
 
         return None
@@ -73,6 +73,7 @@ class LocksQuery(Query):
 class PuzzlesQuery(Query):
     def perform(self, state: State):
         return [puzzle for lock in state.locks for puzzle in lock.puzzles]
+
 
 class GameQuery(Query):
     def perform(self, state: State):

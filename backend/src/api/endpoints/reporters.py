@@ -4,6 +4,7 @@ from src.game.models import Puzzle, PuzzleState
 from src.game.actions import UpdatePuzzleAction
 from src.game.queries import ReporterExistsQuery
 
+
 class Reporters(Resource):
     def __init__(self, store):
         self.store = store
@@ -14,7 +15,7 @@ class Reporters(Resource):
         if not devices:
             return 400
 
-        print('[{}] {}'.format(reporter, devices)) # ToDo use logger
+        print('[{}] {}'.format(reporter, devices))  # ToDo use logger
 
         query = ReporterExistsQuery(reporter)
         reporter_exists = self.store.perform_query(query)

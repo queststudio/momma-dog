@@ -5,6 +5,7 @@ healthy = {
     'status': 'healthy'
 }
 
+
 class Health(Resource):
     def get(self):
         return jsonify(healthy)

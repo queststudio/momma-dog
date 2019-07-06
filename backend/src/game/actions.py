@@ -17,7 +17,7 @@ class UpdatePuzzleAction(Action):
         for lock in new_state.locks:
             for puzzle in lock.puzzles:
                 if (puzzle.reporter == self.puzzle.reporter
-                    and puzzle.local_address == self.puzzle.local_address):
+                        and puzzle.local_address == self.puzzle.local_address):
                     if (puzzle.state != PuzzleState.SOLVED):
                         puzzle.state = self.puzzle.state
 
