@@ -1,4 +1,4 @@
-FROM python:3.6.4
+FROM python:3.7.3
 MAINTAINER dmigo
 
 RUN apt-get update && apt-get install -y curl
@@ -7,8 +7,8 @@ RUN apt-get install -y build-essential tk-dev libncurses5-dev libncursesw5-dev l
 COPY requirements.txt /
 RUN pip3 install -r requirements.txt
 
-CMD python3 --version
-CMD pip3 --version
+RUN python3 --version
+RUN pip3 --version
 
 COPY . ./backend
 WORKDIR ./backend
