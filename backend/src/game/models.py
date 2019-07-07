@@ -32,17 +32,23 @@ class LockState(Enum):
     CLOSED = 'closed'
 
 
+class LockOperator(Enum):
+    OR = 'or'
+    AND = 'and'
+
+
 class Lock():
-    def __init__(self, label=None, address=None, port=None, puzzles=[]):
+    def __init__(self, label=None, address=None, port=None, puzzles=[], operator: LockOperator = LockOperator.AND):
         self.label = label
         self.address = address
         self.port = port
         self.puzzles = puzzles
+        self.operator = operator
 
     @property
     def state(self):
-        open = all(
-            [puzzle.state == PuzzleState.SOLVED for puzzle in self.puzzles])
+        condition = all if self.operator == LockOperator.AND else any
+        open = condition([puzzle.state == PuzzleState.SOLVED for puzzle in self.puzzles])
         return LockState.OPEN if open else LockState.CLOSED
 
     def serialize(self):
