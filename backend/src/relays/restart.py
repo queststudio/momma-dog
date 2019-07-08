@@ -1,9 +1,8 @@
-def restart_creator(set_state):
+def restart_creator(set_state, configuration):
     def restart():
-        # ToDo move that to some kind of settings
-        address = 58
-        port = 4
-
+        address = configuration.Plugins['relays'].Properties['ADDRESS']
+        port = configuration.Plugins['relays'].Properties['PORT']
+        
         set_state(address, port, False)
         set_state(address, port, True)
 

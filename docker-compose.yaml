@@ -14,5 +14,3 @@ services:
     container_name: md01
     expose:
       - "8088"
-    devices:
-      - "/dev/i2c-1:/dev/i2c-1"

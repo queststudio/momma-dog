@@ -47,6 +47,7 @@ class Lock():
 
     @property
     def state(self):
+        # TODO should it be moved to queries?
         condition = all if self.operator == LockOperator.AND else any
         open = condition([puzzle.state == PuzzleState.SOLVED for puzzle in self.puzzles])
         return LockState.OPEN if open else LockState.CLOSED

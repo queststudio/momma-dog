@@ -1,6 +1,6 @@
 from functools import reduce
 
-from src.game.models import State, Lock, Puzzle, Switch
+from src.game.models import State, Lock, Puzzle, Switch, LockOperator
 from src.game.actions import Action
 from src.game.queries import Query
 
@@ -43,9 +43,12 @@ class Store():
 
 
 init_state = State(locks=[
-    Lock('Гнев', 56, 0, [
-        Puzzle('62:01:94:70:63:9d', 8)
-    ]),
+    Lock('TEST', 56, 0, [
+        Puzzle('62:01:94:70:63:9d', 8),
+        Puzzle('62:01:94:70:63:9d', 9),
+        Puzzle('62:01:94:70:63:9d', 10),
+        Puzzle('62:01:94:70:63:9d', 11)
+    ], LockOperator.OR),
     Lock('Уныние', 56, 1, [
         Puzzle('a2:20:a6:02:08:b4', 11)
     ]),
